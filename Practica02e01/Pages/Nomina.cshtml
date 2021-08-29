@@ -1,6 +1,7 @@
 ﻿@page
 @model Practica02e01.Pages.NominaModel
 @{
+    ViewData["Title"] = "Nómina";
 }
 <style>
     td, th {
@@ -20,7 +21,7 @@
 
 <div class="text-center">
     <br>
-    <h1>Tabla de Nómina</h1>
+    <h1>Tabla de @ViewData["Title"]</h1>
     <br>
     <table>
         <tr>
