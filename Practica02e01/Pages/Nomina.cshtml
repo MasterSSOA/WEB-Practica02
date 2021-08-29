@@ -1,0 +1,54 @@
+﻿@page
+@model Practica02e01.Pages.NominaModel
+@{
+}
+<style>
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 7px;
+    }
+
+    td{
+        text-align: right;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+<div class="text-center">
+    <br>
+    <h1>Tabla de Nómina</h1>
+    <br>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Cargo</th>
+            <th>Salario Mensual</th>
+            <th>Descuento AFP</th>
+            <th>Descuento ARS</th>
+            <th>Descuento ISR</th>
+            <th>Total Descuento</th>
+            <th>Salario Neto</th>
+        </tr>
+
+        @for (int i = 0; i < Model.Nombres.Count; i++)
+        {
+            <tr>
+                <td style = "text-align: left">@Model.Nombres[i]</td>
+                <td style = "text-align: left">@Model.Apellidos[i]</td>
+                <td style = "text-align: left">@Model.Cargo[i]</td>
+                <td>@string.Format("{0:0,0.00}", Model.Salario[i])</td>
+                <td>@string.Format("{0:0,0.00}", Model.DescuentoAFP(Model.Salario[i]))</td>
+                <td>@string.Format("{0:0,0.00}", Model.DescuentoARS(Model.Salario[i]))</td>
+                <td>@string.Format("{0:0,0.00}", Model.DescuentoIRS(Model.Salario[i]))</td>
+                <td>@string.Format("{0:0,0.00}", Model.DescuentoTotal(Model.Salario[i]))</td>
+                <td>@string.Format("{0:0,0.00}", Model.SalarioNeto(Model.Salario[i]))</td>
+            </tr>
+        }
+    </table>
+</div>
+
